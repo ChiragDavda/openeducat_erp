@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="student_attendance_new_form">
+            <field name="name">student.attendance.new.form</field>
+            <field name="model">student.attendance.new</field>
+            <field name="arch" type="xml">
+                <form string="Student Attendance Report">                    
+                    <group>
+                        <group>
+                            <field name="from_date" attrs="{'required':[('to_date','!=',False)]}"/>
+                            <field name="to_date" attrs="{'required':[('from_date','!=',False)]}"/>
+                        </group>
+                        <group>
+                            <field name="course_id" options="{'no_create': True, 'no_open': True}"/>
+                            <field name="batch_id" widget="many2many_tags" options="{'no_create': True, 'no_open': True}" domain="[('course_id','=', course_id)]"/>
+                            <field name="session_id" widget="many2many_tags" options="{'no_create': True, 'no_open': True}" domain="[('batch_id','=', batch_id)]"/>
+                            <field name="student_id" widget="many2many_tags" options="{'no_create': True, 'no_open': True}" domain="['|',('id','=',batch_id),('id', '=',session_id)]"/>
+                        </group>
+                    </group>
+                    <footer>
+                        <span groups="base.group_user">
+                            <button
+                                string="Print"
+                                type="object" name="print_report" class="oe_highlight" />
+                            <button special="cancel" string="Close"
+                                type="object" />
+                        </span>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_student_attendence_report" model="ir.actions.act_window">
+            <field name="name">Student Attendance Report</field>
+            <field name="res_model">student.attendance.new</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="student_attendance_new_form"/>
+            <field name="target">new</field>
+        </record>
+        
+    </data>
+</odoo>

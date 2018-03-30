@@ -21,3 +21,4 @@
 
 from . import attendance_import
 from . import student_attendance_wizard
+from . import student_attendance_wizard_new

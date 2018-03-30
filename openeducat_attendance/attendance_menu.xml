@@ -19,5 +19,13 @@
             parent="menu_op_attendance_root" sequence="30"
             action="act_open_op_attendance_line_view"
             groups="openeducat_core.group_op_student,openeducat_core.group_op_back_office,openeducat_core.group_op_faculty,openeducat_core.group_op_back_office_admin" />
+
+
+        <menuitem id="menu_op_attendance_main_report" name="Report"
+               parent="menu_op_attendance_root" sequence="40"/>
+               
+        <menuitem id="menu_op_attendance_report_child" name="Student Attendance"
+              action="action_student_attendence_report" parent="menu_op_attendance_main_report" />
+              
     </data>
 </odoo>

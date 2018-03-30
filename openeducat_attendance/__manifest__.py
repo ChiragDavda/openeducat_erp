@@ -35,6 +35,7 @@
         'security/op_attendance_security.xml',
         'wizards/attendance_import_view.xml',
         'wizards/student_attendance_wizard_view.xml',
+        'wizards/student_attendance_wizard_new.xml',
         'views/attendance_register_view.xml',
         'views/attendance_sheet_view.xml',
         'views/attendance_line_view.xml',
